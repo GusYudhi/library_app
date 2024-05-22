@@ -10,7 +10,7 @@ class LibraryApp(tk.Tk):
         super().__init__()
         self.title("Perpustakaan Digital")
         self.geometry("800x600")
-        self.attributes("-fullscreen", True)  # Mengatur fullscreen
+        self.state("zoomed")  # Mengatur fullscreen
 
         container = tk.Frame(self)
         container.pack(side="top", fill="both", expand=True)
