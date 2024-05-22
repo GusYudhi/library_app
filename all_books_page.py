@@ -10,7 +10,7 @@ class AllBooksPage(tk.Frame):
         self.create_ui()
 
     def create_ui(self):
-        self.book_list_frame = tk.Frame(self, bg="white")
+        self.book_list_frame = tk.Frame(self, bg="#FFE8C8")
         self.book_list_frame.pack(fill="both", expand=True, padx=10, pady=10)
         self.load_all_books()
 
@@ -20,7 +20,7 @@ class AllBooksPage(tk.Frame):
             self.display_book(book)
 
     def display_book(self, book):
-        book_frame = tk.Frame(self.book_list_frame, bd=2, relief="groove", padx=5, pady=5, bg="white")
+        book_frame = tk.Frame(self.book_list_frame, bd=2, relief="groove", padx=5, pady=5, bg="#FFE8C8")
         book_frame.pack(pady=5, fill="x")
 
         cover_image = tk.PhotoImage(file=book['cover'])
@@ -28,16 +28,16 @@ class AllBooksPage(tk.Frame):
         cover_label.image = cover_image  # Keep a reference to avoid garbage collection
         cover_label.pack(side="left")
 
-        book_info_frame = tk.Frame(book_frame, bg="white")
+        book_info_frame = tk.Frame(book_frame, bg="#FFE8C8")
         book_info_frame.pack(side="left", padx=10)
 
-        title_label = tk.Label(book_info_frame, text=f"Judul: {book['title']}", font=("Times New Roman", 12), bg="white")
+        title_label = tk.Label(book_info_frame, text=f"Judul: {book['title']}", font=("Times New Roman", 12), bg="#FFE8C8")
         title_label.pack(anchor="w")
 
-        author_label = tk.Label(book_info_frame, text=f"Penulis: {book['author']}", font=("Times New Roman", 12), bg="white")
+        author_label = tk.Label(book_info_frame, text=f"Penulis: {book['author']}", font=("Times New Roman", 12), bg="#FFE8C8")
         author_label.pack(anchor="w")
 
-        year_label = tk.Label(book_info_frame, text=f"Tahun: {book['year']}", font=("Times New Roman", 12), bg="white")
+        year_label = tk.Label(book_info_frame, text=f"Tahun: {book['year']}", font=("Times New Roman", 12), bg="#FFE8C8")
         year_label.pack(anchor="w")
 
         read_button = tk.Button(book_frame, text="Baca", command=lambda path=book['path']: self.read_book(path))

@@ -39,7 +39,7 @@ class HomePage(tk.Frame):
         recent_activity_button = tk.Button(sidebar, text="Aktivitas Terbaru", command=self.show_recent_activity, font=("Times New Roman", 14), bg="#FFEC9E")
         recent_activity_button.pack(fill="x")
 
-        self.content_frame = tk.Frame(self, bg="#EC8F5E")
+        self.content_frame = tk.Frame(self, bg="#FFE8C8")
         self.content_frame.pack(fill="both", expand=True, side="right")
 
         self.show_home()

@@ -39,13 +39,13 @@ class AddBookPage(tk.Frame):
         self.cover_image_path = None
 
         self.pdf_button = tk.Button(content_frame, text="Pilih File PDF", command=self.select_pdf)
-        self.pdf_button.grid(row=3, column=0, columnspan=2, padx=25, pady=5, sticky="we")
+        self.pdf_button.grid(row=3, column=0, columnspan=2, padx=100, pady=5, sticky="we")
 
         self.cover_label = tk.Label(content_frame, bg="white")
         self.cover_label.grid(row=4, column=0, columnspan=2, padx=10, pady=5)
 
         self.save_button = tk.Button(content_frame, text="Simpan", command=self.save_book)
-        self.save_button.grid(row=5, column=0, columnspan=2, padx=25, pady=5, sticky="we")
+        self.save_button.grid(row=5, column=0, columnspan=2, padx=100, pady=5, sticky="we")
         
         content_frame.grid_columnconfigure(0, weight=0, minsize=50)  # Set weight and minsize for the first column
         content_frame.grid_columnconfigure(1, weight=1, minsize=100)  # Set weight and minsize for the second column
