@@ -1,1 +1,23 @@
-[]
+[
+    {
+        "title": "Buku Fisika Kelas XI",
+        "author": "Marianna Magdalena Radjawane\nAlvius Tinambunan\nSuntar Jono",
+        "year": "2022",
+        "path": "data\\books\\Fisika-BS-KLS-XI.pdf",
+        "cover": "data\\books\\Fisika-BS-KLS-XI.png"
+    },
+    {
+        "title": "Hello World",
+        "author": "lorem ipsum",
+        "year": "2023",
+        "path": "data\\books\\599-Article Text-2876-2-10-20221130.pdf",
+        "cover": "data\\books\\599-Article Text-2876-2-10-20221130.png"
+    },
+    {
+        "title": "LDKJFLFJLKFJLKFJ",
+        "author": "sddsfdsf",
+        "year": "2026",
+        "path": "data\\books\\725-13-3141-1-10-20210701.pdf",
+        "cover": "data\\books\\725-13-3141-1-10-20210701.png"
+    }
+]
