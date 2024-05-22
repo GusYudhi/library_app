@@ -7,15 +7,7 @@ class RecentActivityPage(tk.Frame):
         self.controller = controller
         self.configure(bg="#FFE8C8")
         self.data_handler = DataHandler("data")
-        self.create_header()
         self.create_ui()
-
-    def create_header(self):
-        header_frame = tk.Frame(self, bg="#EC8F5E", height=50)
-        header_frame.pack(side="top", fill="x")
-
-        header_label = tk.Label(header_frame, text="Perpustakaan Digital", font=("Rockwell Condensed", 24), bg="#EC8F5E")
-        header_label.pack(pady=10)
 
     def create_ui(self):
         self.activity_list_frame = tk.Frame(self, bg="white")
