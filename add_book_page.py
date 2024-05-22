@@ -17,19 +17,19 @@ class AddBookPage(tk.Frame):
         content_frame = tk.Frame(self, bg="#FFE8C8")
         content_frame.pack(fill="both", expand=True, pady=(10, 0))  # Adjust padding to avoid overlap with header
         
-        self.title_label = tk.Label(content_frame, text="Judul:", bg="#FFE8C8")
+        self.title_label = tk.Label(content_frame, text="Judul:", bg="#FFE8C8", font=("Times New Roman", 14))
         self.title_label.grid(row=0, column=0, padx=10, pady=5, sticky="w")
 
         self.title_entry = tk.Entry(content_frame)
         self.title_entry.grid(row=0, column=1, padx=10, pady=5, sticky="we")
 
-        self.author_label = tk.Label(content_frame, text="Penulis:", bg="white")
+        self.author_label = tk.Label(content_frame, text="Penulis:", bg="#FFE8C8", font=("Times New Roman", 14))
         self.author_label.grid(row=1, column=0, padx=10, pady=5, sticky="w")
 
         self.author_entry = tk.Entry(content_frame)
         self.author_entry.grid(row=1, column=1, padx=10, pady=5, sticky="we")
 
-        self.year_label = tk.Label(content_frame, text="Tahun:", bg="white")
+        self.year_label = tk.Label(content_frame, text="Tahun:", bg="#FFE8C8", font=("Times New Roman", 14))
         self.year_label.grid(row=2, column=0, padx=10, pady=5, sticky="w")
 
         self.year_entry = tk.Entry(content_frame)
@@ -39,16 +39,16 @@ class AddBookPage(tk.Frame):
         self.cover_image_path = None
 
         self.pdf_button = tk.Button(content_frame, text="Pilih File PDF", command=self.select_pdf)
-        self.pdf_button.grid(row=3, column=0, columnspan=2, padx=10, pady=5, sticky="we")
+        self.pdf_button.grid(row=3, column=0, columnspan=2, padx=25, pady=5, sticky="we")
 
         self.cover_label = tk.Label(content_frame, bg="white")
         self.cover_label.grid(row=4, column=0, columnspan=2, padx=10, pady=5)
 
         self.save_button = tk.Button(content_frame, text="Simpan", command=self.save_book)
-        self.save_button.grid(row=5, column=0, columnspan=2, padx=10, pady=5, sticky="we")
+        self.save_button.grid(row=5, column=0, columnspan=2, padx=25, pady=5, sticky="we")
         
-        for i in range(2):  # Add weight to columns for better resizing behavior
-            content_frame.grid_columnconfigure(i, weight=1)
+        content_frame.grid_columnconfigure(0, weight=0, minsize=50)  # Set weight and minsize for the first column
+        content_frame.grid_columnconfigure(1, weight=1, minsize=100)  # Set weight and minsize for the second column
 
     def select_pdf(self):
         pdf_path = filedialog.askopenfilename(filetypes=[("PDF Files", "*.pdf")])

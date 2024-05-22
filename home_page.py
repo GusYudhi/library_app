@@ -24,22 +24,22 @@ class HomePage(tk.Frame):
         header_label.pack(pady=10)
         
     def create_ui(self):
-        sidebar = tk.Frame(self, bg="#FFA62F", width=200)
+        sidebar = tk.Frame(self, bg="#EC8F5E", width=200)
         sidebar.pack(fill="y", side="left")
 
-        home_button = tk.Button(sidebar, text="Beranda", command=self.show_home, font=("Times New Roman", 14))
+        home_button = tk.Button(sidebar, text="Beranda", command=self.show_home, font=("Times New Roman", 14), bg="#FFEC9E")
         home_button.pack(fill="x")
 
-        add_book_button = tk.Button(sidebar, text="Tambahkan Koleksi Buku", command=self.show_add_book, font=("Times New Roman", 14))
+        add_book_button = tk.Button(sidebar, text="Tambahkan Koleksi Buku", command=self.show_add_book, font=("Times New Roman", 14), bg="#FFEC9E")
         add_book_button.pack(fill="x")
 
-        all_books_button = tk.Button(sidebar, text="Semua Koleksi Buku", command=self.show_all_books, font=("Times New Roman", 14))
+        all_books_button = tk.Button(sidebar, text="Semua Koleksi Buku", command=self.show_all_books, font=("Times New Roman", 14), bg="#FFEC9E")
         all_books_button.pack(fill="x")
 
-        recent_activity_button = tk.Button(sidebar, text="Aktivitas Terbaru", command=self.show_recent_activity, font=("Times New Roman", 14))
+        recent_activity_button = tk.Button(sidebar, text="Aktivitas Terbaru", command=self.show_recent_activity, font=("Times New Roman", 14), bg="#FFEC9E")
         recent_activity_button.pack(fill="x")
 
-        self.content_frame = tk.Frame(self, bg="white")
+        self.content_frame = tk.Frame(self, bg="#EC8F5E")
         self.content_frame.pack(fill="both", expand=True, side="right")
 
         self.show_home()
@@ -51,7 +51,7 @@ class HomePage(tk.Frame):
         search_frame = tk.Frame(self.content_frame, bg="#FFE8C8")
         search_frame.pack(fill="x")
 
-        search_label = tk.Label(search_frame, text="Cari Buku:", bg="White", font=("Times New Roman", 14))
+        search_label = tk.Label(search_frame, text="Cari Buku:", bg="#FFE8C8", font=("Times New Roman", 14))
         search_label.pack(side="left", padx=5)
 
         self.search_entry = tk.Entry(search_frame)
@@ -80,7 +80,7 @@ class HomePage(tk.Frame):
             for book in search_results:
                 self.display_book(book, self.favorites_frame)
         else:
-            no_result_label = tk.Label(self.favorites_frame, text="Tidak ditemukan buku dengan judul tersebut.", bg="#FFE8C8")
+            no_result_label = tk.Label(self.favorites_frame, text="Buku tidak ditemukan", bg="#FFE8C8")
             no_result_label.pack()
 
     def display_book(self, book, parent):
