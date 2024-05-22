@@ -6,7 +6,7 @@ class OpeningPage(tk.Frame):
         self.controller = controller
         self.configure(bg="lightblue")
 
-        label = tk.Label(self, text="Selamat datang di Perpustakaan Digital", font=("Helvetica", 24), bg="lightblue")
+        label = tk.Label(self, text="Selamat datang di Perpustakaan Digital", font=("Times New Roman", 24), bg="#F3B664")
         label.pack(expand=True)
         
         

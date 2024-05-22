@@ -7,8 +7,15 @@ class AllBooksPage(tk.Frame):
         self.controller = controller
         self.configure(bg="#FFE8C8")
         self.data_handler = DataHandler("data")
-
+        self.create_header()
         self.create_ui()
+
+    def create_header(self):
+        header_frame = tk.Frame(self, bg="#EC8F5E", height=50)
+        header_frame.pack(side="top", fill="x")
+
+        header_label = tk.Label(header_frame, text="Perpustakaan Digital", font=("Rockwell Condensed", 24), bg="#EC8F5E")
+        header_label.pack(pady=10)
 
     def create_ui(self):
         self.book_list_frame = tk.Frame(self, bg="white")
@@ -32,13 +39,13 @@ class AllBooksPage(tk.Frame):
         book_info_frame = tk.Frame(book_frame, bg="white")
         book_info_frame.pack(side="left", padx=10)
 
-        title_label = tk.Label(book_info_frame, text=f"Judul: {book['title']}", font=("Helvetica", 12), bg="white")
+        title_label = tk.Label(book_info_frame, text=f"Judul: {book['title']}", font=("Times New Roman", 12), bg="white")
         title_label.pack(anchor="w")
 
-        author_label = tk.Label(book_info_frame, text=f"Penulis: {book['author']}", font=("Helvetica", 12), bg="white")
+        author_label = tk.Label(book_info_frame, text=f"Penulis: {book['author']}", font=("Times New Roman", 12), bg="white")
         author_label.pack(anchor="w")
 
-        year_label = tk.Label(book_info_frame, text=f"Tahun: {book['year']}", font=("Helvetica", 12), bg="white")
+        year_label = tk.Label(book_info_frame, text=f"Tahun: {book['year']}", font=("Times New Roman", 12), bg="white")
         year_label.pack(anchor="w")
 
         read_button = tk.Button(book_frame, text="Baca", command=lambda path=book['path']: self.read_book(path))

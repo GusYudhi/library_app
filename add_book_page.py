@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import filedialog
 from PIL import Image, ImageTk
 from utils import extract_pdf_cover
+from data_handler import DataHandler
 
 class AddBookPage(tk.Frame):
     def __init__(self, parent, controller):  
@@ -9,8 +10,17 @@ class AddBookPage(tk.Frame):
         self.controller = controller
         self.configure(bg="#FFE8C8")
 
+        self.data_handler = DataHandler("data")
+        self.create_header()
         self.create_ui()
 
+    def create_header(self):
+        header_frame = tk.Frame(self, bg="#EC8F5E", height=50)
+        header_frame.pack(side="top", fill="x")
+
+        header_label = tk.Label(header_frame, text="Perpustakaan Digital", font=("Rockwell Condensed", 24), bg="#EC8F5E")
+        header_label.pack(pady=10)
+        
     def create_ui(self):
         self.title_label = tk.Label(self, text="Judul:", bg="white")
         self.title_label.grid(row=0, column=0, padx=10, pady=5, sticky="w")

@@ -13,22 +13,30 @@ class HomePage(tk.Frame):
         self.configure(bg="#FFE8C8")
 
         self.data_handler = DataHandler("data")
+        self.create_header()
         self.create_ui()
 
+    def create_header(self):
+        header_frame = tk.Frame(self, bg="#EC8F5E", height=50)
+        header_frame.pack(side="top", fill="x")
+
+        header_label = tk.Label(header_frame, text="Perpustakaan Digital", font=("Rockwell Condensed", 24), bg="#EC8F5E")
+        header_label.pack(pady=10)
+        
     def create_ui(self):
         sidebar = tk.Frame(self, bg="#FFA62F", width=200)
         sidebar.pack(fill="y", side="left")
 
-        home_button = tk.Button(sidebar, text="Beranda", command=self.show_home, font=("Helvetica", 14))
+        home_button = tk.Button(sidebar, text="Beranda", command=self.show_home, font=("Times New Roman", 14))
         home_button.pack(fill="x")
 
-        add_book_button = tk.Button(sidebar, text="Tambahkan Koleksi Buku", command=self.show_add_book, font=("Helvetica", 14))
+        add_book_button = tk.Button(sidebar, text="Tambahkan Koleksi Buku", command=self.show_add_book, font=("Times New Roman", 14))
         add_book_button.pack(fill="x")
 
-        all_books_button = tk.Button(sidebar, text="Semua Koleksi Buku", command=self.show_all_books, font=("Helvetica", 14))
+        all_books_button = tk.Button(sidebar, text="Semua Koleksi Buku", command=self.show_all_books, font=("Times New Roman", 14))
         all_books_button.pack(fill="x")
 
-        recent_activity_button = tk.Button(sidebar, text="Aktivitas Terbaru", command=self.show_recent_activity, font=("Helvetica", 14))
+        recent_activity_button = tk.Button(sidebar, text="Aktivitas Terbaru", command=self.show_recent_activity, font=("Times New Roman", 14))
         recent_activity_button.pack(fill="x")
 
         self.content_frame = tk.Frame(self, bg="white")
@@ -43,13 +51,13 @@ class HomePage(tk.Frame):
         search_frame = tk.Frame(self.content_frame, bg="#FFE8C8")
         search_frame.pack(fill="x")
 
-        search_label = tk.Label(search_frame, text="Cari Buku:", bg="White", font=("Helvetica", 14))
+        search_label = tk.Label(search_frame, text="Cari Buku:", bg="White", font=("Times New Roman", 14))
         search_label.pack(side="left", padx=5)
 
         self.search_entry = tk.Entry(search_frame)
         self.search_entry.pack(side="left", padx=5, fill="x", expand=True)
 
-        search_button = tk.Button(search_frame, text="Cari", command=self.search_book, font=("Helvetica", 14))
+        search_button = tk.Button(search_frame, text="Cari", command=self.search_book, font=("Times New Roman", 14))
         search_button.pack(side="left", padx=5)
 
         self.favorites_frame = tk.Frame(self.content_frame, bg="#FFE8C8")
@@ -87,16 +95,16 @@ class HomePage(tk.Frame):
         book_info_frame = tk.Frame(book_frame, bg="#FFE8C8")
         book_info_frame.pack(side="left", padx=10)
 
-        title_label = tk.Label(book_info_frame, text=f"Judul: {book['title']}", font=("Helvetica", 14), bg="#FFE8C8")
+        title_label = tk.Label(book_info_frame, text=f"Judul: {book['title']}", font=("Times New Roman", 14), bg="#FFE8C8")
         title_label.pack(anchor="w")
 
-        author_label = tk.Label(book_info_frame, text=f"Penulis: {book['author']}", font=("Helvetica", 14), bg="#FFE8C8")
+        author_label = tk.Label(book_info_frame, text=f"Penulis: {book['author']}", font=("Times New Roman", 14), bg="#FFE8C8")
         author_label.pack(anchor="w")
 
-        year_label = tk.Label(book_info_frame, text=f"Tahun: {book['year']}", font=("Helvetica", 14), bg="#FFE8C8")
+        year_label = tk.Label(book_info_frame, text=f"Tahun: {book['year']}", font=("Times New Roman", 14), bg="#FFE8C8")
         year_label.pack(anchor="w")
 
-        read_button = tk.Button(book_frame, text="Baca", font=("Helvetica", 14), command=lambda path=book['path']: self.read_book(path))
+        read_button = tk.Button(book_frame, text="Baca", font=("Times New Roman", 14), command=lambda path=book['path']: self.read_book(path))
         read_button.pack(pady=2, side="right")
 
     def read_book(self, pdf_path):
