@@ -1,1 +1,30 @@
-[]
+[
+    {
+        "title": "Buku Fisika Kelas XI",
+        "author": "Marianna Magdalena Radjawane, \nAlvius Tinambunan, \nSuntar Jono",
+        "year": "2022",
+        "path": "E:/Kuliah smt 4/Metopen/Fisika-BS-KLS-XI.pdf",
+        "cover": "E:/Kuliah smt 4/Metopen/Fisika-BS-KLS-XI.png"
+    },
+    {
+        "title": "E-Book LABORATORIUM VIRTUAL Konsep dan Simulasi Fisika",
+        "author": "Wandah Wibawanto, S.Sn. M.Ds.",
+        "year": "2020",
+        "path": "E:/Kuliah smt 4/Metopen/E-Book LABORATORIUM VIRTUAL Konsep dan Simulasi Fisika.pdf",
+        "cover": "E:/Kuliah smt 4/Metopen/E-Book LABORATORIUM VIRTUAL Konsep dan Simulasi Fisika.png"
+    },
+    {
+        "title": "E-Book LABORATORIUM VIRTUAL Konsep dan Simulasi Fisika",
+        "author": "Wandah Wibawanto, S.Sn. M.Ds.",
+        "year": "2020",
+        "path": "data\\books\\E-Book LABORATORIUM VIRTUAL Konsep dan Simulasi Fisika.pdf",
+        "cover": "data\\books\\E-Book LABORATORIUM VIRTUAL Konsep dan Simulasi Fisika.png"
+    },
+    {
+        "title": "E-Book LABORATORIUM VIRTUAL Konsep dan Simulasi Fisika",
+        "author": "Wandah Wibawanto, S.Sn. M.Ds.",
+        "year": "2020",
+        "path": "data\\books\\E-Book LABORATORIUM VIRTUAL Konsep dan Simulasi Fisika.pdf",
+        "cover": "data\\books\\E-Book LABORATORIUM VIRTUAL Konsep dan Simulasi Fisika.png"
+    }
+]

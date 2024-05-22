@@ -1,8 +1,10 @@
 import tkinter as tk
-from tkinter import filedialog
+from tkinter import filedialog, messagebox
 from PIL import Image, ImageTk
 from utils import extract_pdf_cover
 from data_handler import DataHandler
+import shutil
+import os
 
 class AddBookPage(tk.Frame):
     def __init__(self, parent, controller):  
@@ -71,18 +73,34 @@ class AddBookPage(tk.Frame):
         author = self.author_entry.get()
         year = self.year_entry.get()
         if title and author and year and self.pdf_path:
+            books_dir = os.path.join("data", "books")
+            if not os.path.exists(books_dir):
+                os.makedirs(books_dir)
+
+            new_file_path = os.path.join(books_dir, os.path.basename(self.pdf_path))
+            shutil.copy(self.pdf_path, new_file_path)
+
+            cover_image_path = extract_pdf_cover(new_file_path)
+
             book_info = {
                 "title": title,
                 "author": author,
                 "year": year,
-                "path": self.pdf_path,
-                "cover": self.cover_image_path
+                "path": new_file_path,
+                "cover": cover_image_path
             }
+
+            # Tambahkan buku ke metadata
             self.data_handler.add_book(book_info)
+            
+            # Catat aktivitas penambahan buku
+            self.data_handler.log_activity(f"Menambahkan buku '{title}'")
+
             self.reset_form()
-            tk.messagebox.showinfo("Info", "Buku berhasil ditambahkan.")
+            messagebox.showinfo("Info", "Buku berhasil ditambahkan.")
         else:
-            tk.messagebox.showerror("Error", "Mohon lengkapi semua kolom dan pilih file PDF.")
+            messagebox.showerror("Error", "Mohon lengkapi semua kolom dan pilih file PDF.")
+
 
     def reset_form(self):
         self.title_entry.delete(0, tk.END)
