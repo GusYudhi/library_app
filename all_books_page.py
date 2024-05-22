@@ -55,13 +55,10 @@ class AllBooksPage(tk.Frame):
         year_label = tk.Label(book_info_frame, text=f"Tahun: {book['year']}", font=("Times New Roman", 12), bg="#FFE8C8")
         year_label.pack(anchor="w")
 
-        read_button = tk.Button(book_frame, text="Baca", command=lambda path=book['path']: self.read_book(path))
+        read_button = tk.Button(book_frame, text="Baca", command=lambda path=book['path']: self.read_book(path), font=("Times New Roman", 12), bg="#57f53b", width=10)
         read_button.pack(pady=2)
 
-        edit_button = tk.Button(book_frame, text="Edit", command=lambda book=book: self.edit_book(book))
-        edit_button.pack(pady=2)
-
-        delete_button = tk.Button(book_frame, text="Hapus", command=lambda book=book: self.confirm_delete(book))
+        delete_button = tk.Button(book_frame, text="Hapus", command=lambda book=book: self.confirm_delete(book), font=("Times New Roman", 12), bg="#f5663b", width=10)
         delete_button.pack(pady=2)
 
     def read_book(self, pdf_path):
@@ -72,10 +69,6 @@ class AllBooksPage(tk.Frame):
             
     def _on_mousewheel(self, event):
         self.canvas.yview_scroll(int(-1*(event.delta/120)), "units")
-
-    def edit_book(self, book):
-        # Implementasi halaman edit buku
-        pass
 
     def confirm_delete(self, book):
         confirm = messagebox.askyesno("Konfirmasi", f"Apakah Anda yakin ingin menghapus buku berjudul '{book['title']}'?")
