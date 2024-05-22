@@ -1,6 +1,7 @@
 import tkinter as tk
 from data_handler import DataHandler
 import os
+import tkinter.messagebox as messagebox
 
 class AllBooksPage(tk.Frame):
     def __init__(self, parent, controller):  
@@ -25,27 +26,21 @@ class AllBooksPage(tk.Frame):
 
         self.scrollable_frame.bind("<Configure>", lambda e: self.canvas.configure(scrollregion=self.canvas.bbox("all")))
         self.canvas.bind_all("<MouseWheel>", self._on_mousewheel)
-        
+
         self.load_all_books()
 
     def load_all_books(self):
         all_books = self.data_handler.get_all_books()
-        row = 0
-        col = 0
         for book in all_books:
-            self.display_book(book, row, col)
-            col += 1
-            if col == 1:
-                col = 0
-                row += 1
+            self.display_book(book)
 
-    def display_book(self, book, row, col):
+    def display_book(self, book):
         book_frame = tk.Frame(self.scrollable_frame, bd=2, relief="groove", bg="#FFE8C8")
-        book_frame.grid(row=row, column=col, padx=5, pady=5)
+        book_frame.pack(padx=5, pady=5)
 
         cover_image = tk.PhotoImage(file=book['cover'])
         cover_label = tk.Label(book_frame, image=cover_image)
-        cover_label.image = cover_image  # Keep a reference to avoid garbage collection
+        cover_label.image = cover_image
         cover_label.pack()
 
         book_info_frame = tk.Frame(book_frame, bg="#FFE8C8")
@@ -63,11 +58,51 @@ class AllBooksPage(tk.Frame):
         read_button = tk.Button(book_frame, text="Baca", command=lambda path=book['path']: self.read_book(path))
         read_button.pack(pady=2)
 
+        edit_button = tk.Button(book_frame, text="Edit", command=lambda book=book: self.edit_book(book))
+        edit_button.pack(pady=2)
+
+        delete_button = tk.Button(book_frame, text="Hapus", command=lambda book=book: self.confirm_delete(book))
+        delete_button.pack(pady=2)
+
     def read_book(self, pdf_path):
         if os.path.exists(pdf_path):
             os.system(f"start {pdf_path}")
         else:
             tk.messagebox.showerror("Error", f"Tidak dapat menemukan file PDF di {pdf_path}")
             
+    def _on_mousewheel(self, event):
+        self.canvas.yview_scroll(int(-1*(event.delta/120)), "units")
+
+    def edit_book(self, book):
+        # Implementasi halaman edit buku
+        pass
+
+    def confirm_delete(self, book):
+        confirm = messagebox.askyesno("Konfirmasi", f"Apakah Anda yakin ingin menghapus buku berjudul '{book['title']}'?")
+        if confirm:
+            self.delete_book(book)
+
+    def delete_book(self, book):
+        # Hapus file buku dari folder
+        if os.path.exists(book['path']):
+            os.remove(book['path'])
+
+        # Hapus metadata buku dari data handler
+        self.data_handler.delete_book(book)
+
+        # Tampilkan pesan berhasil
+        messagebox.showinfo("Info", f"Buku '{book['title']}' berhasil dihapus.")
+
+        # Perbarui tampilan
+        self.refresh_page()
+
+    def refresh_page(self):
+        # Hapus semua widget pada frame scrollable_frame
+        for widget in self.scrollable_frame.winfo_children():
+            widget.destroy()
+
+        # Muat ulang semua buku
+        self.load_all_books()
+
     def _on_mousewheel(self, event):
         self.canvas.yview_scroll(int(-1*(event.delta/120)), "units")

@@ -54,6 +54,15 @@ class DataHandler:
         self.save_metadata()
         self.log_activity(f"Menambahkan buku '{book_info['title']}'")
 
+    def delete_book(self, book):
+        self.metadata.remove(book)
+        if os.path.exists(book["path"]):
+            os.remove(book["path"])
+        if os.path.exists(book["cover"]):
+            os.remove(book["cover"])
+        self.save_metadata()
+        self.log_activity(f"Menghapus buku '{book['title']}'")
+
     def get_all_books(self):
         return self.metadata
 
